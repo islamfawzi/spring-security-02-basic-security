@@ -29,10 +29,13 @@ public class DemoSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.anyRequest().authenticated()   // any request should be authenticated
 			.and()
-			.formLogin()					// configure the custom login page
-			.loginPage("/login")			// redirect to this path for custom login page
-			.loginProcessingUrl("/authenticateTheUser")	// login page action 
-			.permitAll();			// any one can access login page without authentication
+				.formLogin()					// configure the custom login page
+					.loginPage("/login")			// redirect to this path for custom login page
+					.loginProcessingUrl("/authenticateTheUser")	// login page action 
+					.permitAll()			// any one can access login page without authentication
+			.and()
+				.logout()					// add support to default logout url "/logout"
+				.permitAll();
 	}
 	
 	
