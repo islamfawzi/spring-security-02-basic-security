@@ -13,7 +13,14 @@
 			
 			</c:if>
 			
+			<!-- form:form automatically add CSRF token -->
+			<!-- if you do not used form:form and used normal html <form> tag -->
+			<!-- you must add the CSRF token manually -->
 			<form:form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST">
+	
+				<!-- if you used normal html <form> tag instead of form:form tag -->
+				<!-- you must add this line -->
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	
 				<p>
 					Username: <input type="text" name="username" />
