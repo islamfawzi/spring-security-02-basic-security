@@ -42,7 +42,11 @@ public class DemoSecurityConfiguration extends WebSecurityConfigurerAdapter {
 					.permitAll()			// any one can access login page without authentication
 			.and()
 				.logout()					// add support to default logout url "/logout"
-				.permitAll();
+				.permitAll()
+				
+			.and()
+				.exceptionHandling()
+					.accessDeniedPage("/access-denied");		/** handle custom 403 access-denied page **/ 
 				
 			
 	}
