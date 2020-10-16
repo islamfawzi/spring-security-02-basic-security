@@ -20,13 +20,20 @@ public class DemoSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		UserBuilder users = User.withDefaultPasswordEncoder();
 		
 		auth.inMemoryAuthentication()
-			.withUser(users.username("islam").password("test123").roles("EMPLOYEE", "ADMIN"));
+			.withUser(users.username("islam").password("test123").roles("EMPLOYEE"))
+			.withUser(users.username("admin").password("test123").roles("EMPLOYEE", "ADMIN"))
+			.withUser(users.username("manager").password("test123").roles("EMPLOYEE", "MANAGER"));
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
+			
+		.antMatchers("/").hasAnyRole("EMPLOYEE", "ADMIN", "MANAGER")
+		.antMatchers("/leaders/**").hasAnyRole("ADMIN")
+		.antMatchers("/system").hasRole("MANAGER")
+		
 			.anyRequest().authenticated()   // any request should be authenticated
 			.and()
 				.formLogin()					// configure the custom login page
@@ -36,6 +43,8 @@ public class DemoSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.and()
 				.logout()					// add support to default logout url "/logout"
 				.permitAll();
+				
+			
 	}
 	
 	

@@ -6,6 +6,11 @@
 		<title>Spring Security</title>
 	</head>
 	<body>
+		<p>
+			<a href="${pageContext.request.contextPath}/leaders">Leaders</a> 
+			&nbsp; 
+			<a href="${pageContext.request.contextPath}/system">System</a>
+		</p>
 		<p>Hello in the Spring Security Demo App</p> 
 		
 		<hr>
