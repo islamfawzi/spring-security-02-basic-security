@@ -7,9 +7,18 @@
 	</head>
 	<body>
 		<p>
-			<a href="${pageContext.request.contextPath}/leaders">Leaders</a> 
+			<!-- show Leader link to only who has ADMIN Roles  -->
+			<security:authorize access="hasRole('ADMIN')">
+				<a href="${pageContext.request.contextPath}/leaders">Leaders</a>
+			</security:authorize> 
+			
 			&nbsp; 
-			<a href="${pageContext.request.contextPath}/system">System</a>
+			
+			<!-- show Leader link to only who has MANAGER Roles  -->
+			<security:authorize access="hasRole('MANAGER')">
+				<a href="${pageContext.request.contextPath}/system">System</a>
+			</security:authorize>
+			
 		</p>
 		<p>Hello in the Spring Security Demo App</p> 
 		
