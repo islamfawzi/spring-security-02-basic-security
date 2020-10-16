@@ -26,7 +26,7 @@
 		</dependency>
 
 		<!-- Spring Security -->
-		<!-- spring-security-web and spring-security-config -->
+		<!-- spring-security-web, spring-security-config, spring-security-taglibs -->
 		
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
@@ -37,6 +37,12 @@
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-config</artifactId>
+		    <version>${springsecurity.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
 		    <version>${springsecurity.version}</version>
 		</dependency>	
 		
